@@ -1,0 +1,11 @@
+Dockerfile
+.dockerignore
+node_modules
+npm-debug.log
+dist
+*.log
+.git
+.gitignore
+Jenkinsfile
+Jenkinsfile(vm)
+.gitmessage.txt
