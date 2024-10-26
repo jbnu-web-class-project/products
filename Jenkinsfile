@@ -26,8 +26,8 @@ pipeline {
 
     environment {
         REGISTRY_CREDENTIALS = 'harbor-id'
-        IMAGE_NAME = 'web-back-k8s'
-        GITHUB_REPO = 'https://github.com/jbnu-web-class-project/backend.git'
+        IMAGE_NAME = 'web-back-products-k8s'
+        GITHUB_REPO = 'https://github.com/jbnu-web-class-project/products.git'
         HARBOR_URL = credentials('harbor-url')
         HARBOR_REPO = credentials('harbor-repo')
         MANIFEST_REPO = 'git@github.com:jbnu-web-class-project/k8s-manifest.git'
@@ -86,10 +86,10 @@ pipeline {
                             sh """
                             cd k8s-manifest &&
                             ls -l &&
-                            sed -i 's|image: .*\$|image: ${HARBOR_REPO}/heim/${IMAGE_NAME}:${env.BUILD_ID}|' web-back-deployment.yaml &&
+                            sed -i 's|image: .*\$|image: ${HARBOR_REPO}/heim/${IMAGE_NAME}:${env.BUILD_ID}|' products/back-products-deploy.yaml &&
                             git config --global user.email "gjdhks1212@gmail.com"
                             git config --global user.name "hodu26"
-                            git add web-back-deployment.yaml &&
+                            git add products/back-products-deploy.yaml &&
                             git commit -m 'update: update image to ${env.BUILD_ID}' &&
                             git push --set-upstream origin main
                             """
